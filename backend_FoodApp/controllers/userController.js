@@ -62,8 +62,15 @@ module.exports = {
     
                 await user.save();
     
-                const{password, __v, otp, createdAt, ...others} = user._doc;
-                return res.status(200).json({...others})
+                const userToken = jwt.sign({
+                    id: user._id,
+                    userType: user.userType,
+                    email:  user.email,
+                }, process.env.JWT_SECRET, {expiresIn: "21d"});
+
+                const { password, __v, otp, createdAt, ...others } = user._doc;
+
+                res.status(200).json({...others, userToken});
         } catch (error) {
             res.status(500).json({status: false, message: error.message});
         }

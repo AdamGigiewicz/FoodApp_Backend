@@ -2,16 +2,13 @@ const Order = require('../models/Order');
 
 module.exports = {
     placeOrder: async (req, res)=> {
-        const newOrder = new Order({
-            ...req.body,
-            userId: req.user.id
-        });
+        const newOrder = new Order(req.body);
 
         try {
             await newOrder.save();
             
             const orderId = newOrder._id;
-            res.status(200).json({status: true, message: "Order placed successfully",orderId: orderId});
+            res.status(201).json({status: true, message: "Order placed successfully",orderId: orderId});
         } catch (error) {
           res.status(500).json({status: true, message:error.message});
         }

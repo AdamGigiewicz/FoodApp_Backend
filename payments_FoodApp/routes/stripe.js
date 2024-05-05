@@ -65,8 +65,11 @@ router.post("/create-checkout-session", async (req, res) => {
     line_items,
     mode: "payment",
     customer: customer.id,
-    success_url: "https://03f3-101-44-83-16.ngrok-free.app/stripe/checkout-success",
-    cancel_url:  "https://03f3-101-44-83-16.ngrok-free.app/stripe/cancel",
+    success_url: "http://food.pay.eu.buddy.cloud/stripe/checkout-success",
+    cancel_url:  "http://food.pay.eu.buddy.cloud/stripe/cancel",
+
+    // success_url: "food.api.eu.buddy.cloud/stripe/checkout-success",
+    // cancel_url:  "food.api.eu.buddy.cloud/stripe/cancel",
   });
 
   console.log(session.url);

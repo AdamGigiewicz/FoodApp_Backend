@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
     password: {type: String, required: true},
     verification: {type: Boolean, default: false},
     phone: {type: String, default : "012345678"},
-    phoneVerification: {type: Boolean, default: false},
+    phoneVerification: {type: Boolean, default: true},
     address: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Address",

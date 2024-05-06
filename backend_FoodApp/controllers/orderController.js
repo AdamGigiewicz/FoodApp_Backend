@@ -15,7 +15,7 @@ module.exports = {
     },
 
     getUserOrders: async (req, res) => {
-        const userId = re.user.id;
+        const userId = req.user.id;
         const {paymentStatus, orderStatus} = req.query;
 
         let query = {userId};
